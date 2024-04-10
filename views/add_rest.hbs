@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Restaurant</h1>
+  <form method="POST" action="/api/restaurants/add">
+    <div id="form-group">
+      <label for="name">Name:</label>
+      <input class="form-control" name="name" type="text" />
+    </div>
+    <div id="form-group">
+      <label>Cuisine:</label>
+      {{#each cuisines}}
+        <input class="form-control" name="cuisine" type="checkbox" value="{{this}}" />
+        <label>{{this}}</label>
+      {{/each}}
+    </div>
+    <div id="form-group">
+      <label for="address">Address:</label>
+      <input class="form-control" name="address" type="text" />
+    </div>
+    <div id="form-group">
+      <label for="rating">Rating:</label>
+      <input class="form-control" name="rating" type="number" />
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit" />
+  </form>
+</body>
+</html>
+  
