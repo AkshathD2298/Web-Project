@@ -1,0 +1,38 @@
+<div class="container">
+        <h2>Add Restaurant</h2>
+        <form id="addForm" class="add-form" method="POST" action="/api/restaurant/">
+            <div>
+                    {{#if errs }}
+            {{#each errs}}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+             {{this.msg }}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+           </div>
+        {{/each}}
+    {{/if}} 
+
+            </div>
+            <label for="restaurantId">Restaurant ID:</label>
+            <input type="text" id="restaurantId" name="restaurantId">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="building">Building:</label>
+            <input type="text" id="building" name="building">
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street">
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode">
+            <label for="borough">Borough:</label>
+            <input type="text" id="borough" name="borough">
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine">
+            <br>
+            <input type="hidden" id="grades" name="grades">
+
+            <button type="submit" class="btn-save">Add</button>
+        </form>
+    </div>

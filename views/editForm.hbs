@@ -1,0 +1,63 @@
+<div class="container">
+        <h2>Edit Restaurant</h2>
+        <form id="editForm" class="edit-form" method="post">
+
+            <label for="restaurantId">Restaurant ID:</label>
+            <input type="text" id="restaurantId" name="restaurantId" value="{{data.restaurant_id}}">
+
+            <input type="hidden" id="res_Id" name="res_Id" value="{{res_Id}}">
+            <input type="hidden" id="mType" name="mType" value=""">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{data.name}}">
+
+            <label for="building">Building:</label>
+            <input type="text" id="building" name="building" value="{{data.address.building}}">
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" value="{{data.address.street}}">
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode" value="{{data.address.zipcode}}">
+            
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine" value="{{data.cuisine}}">
+
+            <input type="hidden" id="grades" name="grades" value="{{data.grade}}">
+
+
+            <button type="submit" class="btn-save" value="save">Save Changes</button>
+            <button type="submit" class="btn-delete" value="del">Delete</button>
+        </form>
+    </div>
+<script>
+document.getElementById('editForm').addEventListener('submit', function(event) {
+  event.preventDefault(); 
+  // Prevent the form from submitting
+  
+  const res_Id = document.getElementById('res_Id').value;
+ const clickedButton = event.submitter;
+
+
+  const formAction = `/api/restaurant/${res_Id}`;
+
+  console.log(clickedButton.value+'value');  
+  if(clickedButton.value === 'save')
+  {
+    document.getElementById('editForm').setAttribute('method', 'post'); 
+    document.getElementById('editForm').setAttribute('action', formAction);
+    
+    document.getElementById('mType').value="update";
+   
+  }
+  else
+  {
+    
+    document.getElementById('mType').value="delete";
+    
+    document.getElementById('editForm').setAttribute('method', 'post');
+    document.getElementById('editForm').setAttribute('action', formAction);
+  }
+  
+  // Now you can submit the form
+  this.submit();
+});
+</script>
